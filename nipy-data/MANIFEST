@@ -1,0 +1,12 @@
+MANIFEST.in
+README.txt
+setup.py
+data/config.ini
+data/fiac/fiac0/mask.nii.gz
+data/fiac/fiac0/run1.nii.gz
+data/fiac/fiac0/run1_design.npz
+data/fiac/fiac0/run2.nii.gz
+data/fiac/fiac0/run2_design.npz
+data/neurospin/language_babies/offset_002.npz
+data/neurospin/sulcal2000/nobias_ammon.nii.gz
+data/neurospin/sulcal2000/nobias_anubis.nii.gz

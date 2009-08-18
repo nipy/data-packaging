@@ -1,0 +1,6 @@
+MANIFEST.in
+README.txt
+setup.py
+templates/config.ini
+templates/ICBM152/2mm/T1.nii.gz
+templates/colin27/2mm/T1.nii.gz
