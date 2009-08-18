@@ -18,6 +18,10 @@ Here ``/location/of/example_data`` would be a directory containing the
 ``config.ini`` file and the directory and files that will be exported by
 the ``nipy-data`` package.
 
+We've set ``svn:ignore`` to ignore directories ``nipy-data/data`` and
+``nipy-templates/templates`` to keep the actual data out of the
+repository for now.  We can revisit if that becomes a problem.
+
 Once you have done this::
 
    make templates
