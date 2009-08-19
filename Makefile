@@ -1,6 +1,7 @@
 # Makefile for data
 
-WWW=mb312@cirl.berkeley.edu:www/nipy-data
+SF_USER ?= matthewbrett
+WWW = $(SF_USER),nipy@web.sourceforge.net:htdocs/data-packages/
 
 .PHONY: help clean clean_templates clean_data all 
 help:
@@ -27,7 +28,7 @@ data: clean_data
 	python scripts/validata_data_pkg.py nipy-data
 
 publish_templates: 
-	rsync -avH nipy-templates/dist/*.zip $(WWW)
+	rsync -avH nipy-templates/dist/*.tar.gz $(WWW)
 
 publish_data:
-	rsync -avH nipy-data/dist/*.zip $(WWW)
+	rsync -avH nipy-data/dist/*.tar.gz $(WWW)

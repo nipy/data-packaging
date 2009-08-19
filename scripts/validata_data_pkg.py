@@ -21,6 +21,7 @@ from __future__ import with_statement
 
 import os
 from os.path import join as pjoin
+import sys
 import re
 import subprocess
 from functools import partial
@@ -29,14 +30,9 @@ import zipfile
 import tarfile
 import shutil
 
-import argparse
-
 from nipy.utils import InTemporaryDirectory, make_datasource
 
 caller = partial(subprocess.check_call, shell=True)
-
-parser = argparse.ArgumentParser()
-parser.add_argument('pkg_dirs', nargs='+')
 
 pkg_re = re.compile(r"nipy-(\w+)-\d+\.\d+")
 
@@ -119,7 +115,7 @@ def check_pkg_dir(pkg_dir, clobber=False, formats=('gztar',)):
     Returns
     -------
     archive : list of strings
-       created archive
+       List of created archive filenames (one per passed format)
     '''
     # check there are no dist files
     dist_dir = pjoin(pkg_dir, 'dist')
@@ -159,6 +155,10 @@ def check_pkg_install(archive):
     ----------
     archive : string
        filename of source archive
+
+    Returns
+    -------
+    None
     '''
     # extract package name from archive
     pth, fname = os.path.split(archive)
@@ -181,15 +181,11 @@ def check_pkg_install(archive):
         # check that nipy finds the directory and initializes it correctly
         repo = make_datasource('share', 'nipy', 'nipy', pkg_name,
                                data_path=[tmpdir])
-    return archive
 
 
 def main():
-    # parse the command line
-    args = parser.parse_args()
-    # check the packages
     archives = []
-    for pkg_dir in args.pkg_dirs:
+    for pkg_dir in sys.argv[1:]:
         archive = check_pkg_dir(pkg_dir, clobber=True, formats=('gztar',))[0]
         check_pkg_install(archive)
         archives.append(archive)
