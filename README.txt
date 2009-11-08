@@ -1,8 +1,9 @@
-==========================
+=========================
  Data packaging utilities
 ==========================
 
 The utilities form a shell in which you can link actual data.
+
 
 We avoid keeping the data in this shell because of the overheads for the
 repository.
