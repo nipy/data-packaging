@@ -129,7 +129,7 @@ def check_pkg_dir(pkg_dir, clobber=False, formats=('gztar',)):
     pwd = os.getcwd()
     try:
         os.chdir(pkg_dir)
-        caller('python setup.py sdist --formats=%s' %
+        caller('python setup.py sdist --formats=%s --force-manifest' %
                ','.join(formats))
     finally:
         os.chdir(pwd)
